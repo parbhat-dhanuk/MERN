@@ -25,7 +25,14 @@ const userSchema  =  new mongoose.Schema({
         type : String,
         enum : ["customer","admin"],
         default : "customer",
-    }
+    },
+    otp:{
+        type:String
+      },
+      otpVerified:{
+        type:Boolean,
+        default:false
+      }
 },{timestamps : true})
 
 const User = mongoose.model("User",userSchema)
