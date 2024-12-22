@@ -4,6 +4,8 @@ import connectDB from "./database/connection.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 import authRouter from "./routes/auth/authRoute.js"
+import adminSeeder from "./seeder/adminSeeder.js"
+import productRoute from "./routes/admin/productRoute.js"
 config()
 const app=express()
 const PORT=process.env.PORT
@@ -13,7 +15,8 @@ app.use(cookieParser())  // to verify the token from cookie
 
 
 //Routes
-app.use("/api/auth",authRouter)
+app.use("/api",authRouter)
+app.use("/api",productRoute)
 
 //cors
 app.use(cors({
@@ -23,5 +26,6 @@ app.use(cors({
 
 app.listen(PORT,()=>{
     connectDB()
+    adminSeeder()
     console.log(`Server is running in port:${PORT}`)
 })
