@@ -20,6 +20,12 @@ const productSchema = new mongoose.Schema({
     productStatus : {
         type : String,
         enum : ["available","unavailable"]
+    },
+    imageUrl : {
+        type:String
+    },
+    imagePublicId:{
+        type:String
     }
 },{
     timestamps : true
