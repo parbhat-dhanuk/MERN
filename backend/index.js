@@ -12,6 +12,7 @@ const PORT=process.env.PORT
 
 app.use(express.json())  // to parse the json file
 app.use(cookieParser())  // to verify the token from cookie
+// app.use(express.urlencoded({ extended: false }));
 
 
 //Routes

@@ -12,6 +12,7 @@ export const addProduct = async (req, res) => {
       productStatus,
       productStockQty,
     } = req.body
+    
     if (
       !productName ||
       !productDescription ||
@@ -94,6 +95,7 @@ export const addProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {
     try {
       const { id } = req.params
+     
       const {
         productName,
         productDescription,
@@ -101,6 +103,7 @@ export const updateProduct = async (req, res) => {
         productStatus,
         productStockQty,
       } = req.body
+
       if (
         !productName ||
         !productDescription ||
@@ -111,7 +114,7 @@ export const updateProduct = async (req, res) => {
         return res.status(400).json({ message: 'Please provide all fields' })
       }
   
-      const file=req.file
+     
       let product = await Product.findById(id);
       if (!product){
         return res.status(404).json({message:"Product not found"})
@@ -121,9 +124,10 @@ export const updateProduct = async (req, res) => {
       const cleanedProductDescription = productDescription.replace(/\s+/g, '')
       const cleanedProductStatus = productStatus.replace(/\s+/g, '')
 
+      
       let imageUrl = product.imageUrl
       let imagePublicId = product.imagePublicId
-  
+      const file=req.file
       if (file) {
         // Delete old image from Cloudinary if it exists
         if (product.imagePublicId) {
