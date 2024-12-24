@@ -1,7 +1,8 @@
 import express from "express"
-import { createReview, deleteReview, getReview } from "../../controllers/user/review/reviewController.js"
+
 import isAuthenticated from "../../middleware/isAuthenticated.js"
 import restrictTo from "../../middleware/restrictTo.js"
+import { createReview, deleteReview, getReview } from "../../controllers/customer/review/reviewController.js"
 
 const router=express.Router()
 
