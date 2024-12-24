@@ -5,7 +5,9 @@ import cookieParser from "cookie-parser"
 import cors from "cors"
 import authRouter from "./routes/auth/authRoute.js"
 import adminSeeder from "./seeder/adminSeeder.js"
-import productRoute from "./routes/admin/productRoute.js"
+import productRoute from "./routes/admin/product/productRoute.js"
+import userRouter from "./routes/admin/users/userRoute.js"
+import reviewRouter from "./routes/review/reviewRoute.js"
 config()
 const app=express()
 const PORT=process.env.PORT
@@ -18,6 +20,8 @@ app.use(cookieParser())  // to verify the token from cookie
 //Routes
 app.use("/api",authRouter)
 app.use("/api",productRoute)
+app.use("/api",userRouter)
+app.use("/api",reviewRouter)
 
 //cors
 app.use(cors({

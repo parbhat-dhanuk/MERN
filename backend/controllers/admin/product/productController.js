@@ -1,5 +1,5 @@
-import Product from '../../models/productModel.js'
-import { cloudinary } from '../../utils/cloudinary.js'
+import Product from '../../../models/productModel.js'
+import { cloudinary } from '../../../utils/cloudinary.js'
 
 
 //add a new product
@@ -69,6 +69,9 @@ export const addProduct = async (req, res) => {
   export const fetchAllProducts = async (req, res) => {
     try {
       const products = await Product.find()
+      if(products.length===0){
+        return res.status(400).json({message:"No products are available"})
+      }
       res.status(200).json({data:products})
     } catch (error) {
       console.log("error in fetchAllProduct controller",error.message);
